@@ -1,1 +1,7 @@
-console.log("🚀 Webflow Custom Code Loaded");
+import { heroVisual } from "./page/heroVisual";
+import { visualScroll } from "./page/visualScroll";
+
+document.addEventListener("DOMContentLoaded", () => {
+	heroVisual();
+	visualScroll();
+});

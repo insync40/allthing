@@ -34,6 +34,7 @@ export default defineConfig({
 		watch: {
 			usePolling: true,
 		},
+		allowedHosts: ["dev.indrampd.web.id"],
 	},
 	preview: {
 		port: 4173,
