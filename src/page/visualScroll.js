@@ -43,7 +43,7 @@ function setupRiveVisualScroll(
 			fit: Fit.Contain,
 		}),
 		autoplay: true,
-		autoBind: true,
+		autoBind: true, // enable auto binding
 		onLoad: () => {
 			riveInstance.resizeDrawingSurfaceToCanvas();
 			const section = document.querySelector(".values_wrap");
