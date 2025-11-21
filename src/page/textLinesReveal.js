@@ -12,11 +12,9 @@ function setupTextLinesReveal() {
 
   textEls.forEach((text) => {
     SplitText.create(text.childNodes, {
-      type: "lines, words, chars",
-      linesClass: "line",
+      type: "words, chars",
       wordsClass: "word",
       charsClass: "char",
-      mask: "lines",
       onSplit(self) {
         return gsap
           .timeline({
@@ -37,7 +35,7 @@ function setupTextLinesReveal() {
             willChange: "color",
           })
           .from(self.words, {
-            yPercent: 120,
+            yPercent: 110,
             filter: "blur(20px)",
             autoAlpha: 0,
             delay: 0.2,
