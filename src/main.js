@@ -6,6 +6,11 @@ import { initLenisSmoothScrolling } from "./utils/lenisSmoothScrolling";
 import { initTestimonialSlider } from "./page/home/testimonialSlider";
 import { initTestimonialSecondSlider } from "./page/about/testimonialSecondSlider";
 import { initInvestorSlider } from "./page/about/investorSlider";
+import {
+  initProductHeroItem,
+  initProductHeroVisual,
+  initProductThumbnailVisual,
+} from "./page/products/productRive";
 
 document.addEventListener("DOMContentLoaded", () => {
   initLenisSmoothScrolling();
@@ -19,6 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
   recruitmentAnim();
   initTestimonialSecondSlider();
   initInvestorSlider();
+
+  //   Product Page Animations
+  initProductHeroVisual();
+  initProductThumbnailVisual();
+  initProductHeroItem();
 
   document.fonts.ready.then(() => {
     setupTextLinesReveal();

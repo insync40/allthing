@@ -18,8 +18,8 @@ export function initVisualScroll() {
       setupRiveVisualScroll(
         file,
         "visual_scroll",
-        "visual_scroll",
-        "State Machine 1",
+        "visual_scroll_new",
+        "State Machine 2",
       );
     },
     (error) => {
@@ -54,7 +54,7 @@ function setupRiveVisualScroll(
 
       if (stateMachine) {
         try {
-          const triggers = ["step 01", "step 02", "step 03"];
+          const triggers = ["step_01", "step_02", "step_03"];
           const inputs = riveInstance.stateMachineInputs(stateMachine);
           let currentRiveIndex = -1;
 
@@ -68,6 +68,7 @@ function setupRiveVisualScroll(
               trigger: section,
               start: "top top",
               end: "bottom bottom",
+              markers: true,
               onUpdate: (self) => {
                 const riveProgress = Math.min(self.progress * 3, 3.99);
                 const newIndex = Math.min(
