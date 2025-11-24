@@ -68,7 +68,6 @@ function setupRiveVisualScroll(
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              markers: true,
               onUpdate: (self) => {
                 const riveProgress = Math.min(self.progress * 3, 3.99);
                 const newIndex = Math.min(
