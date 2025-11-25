@@ -11,6 +11,11 @@ import {
   initProductHeroVisual,
   initProductThumbnailVisual,
 } from "./page/products/productRive";
+import {
+  initSolutionHeroItem,
+  initSolutionsThumbnailVisual,
+  solutionsHeroVisual,
+} from "./page/solutions/solutionsRive";
 
 document.addEventListener("DOMContentLoaded", () => {
   initLenisSmoothScrolling();
@@ -29,6 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initProductHeroVisual();
   initProductThumbnailVisual();
   initProductHeroItem();
+
+  // Solutions Page Animations
+  solutionsHeroVisual();
+  initSolutionsThumbnailVisual();
+  initSolutionHeroItem();
 
   document.fonts.ready.then(() => {
     setupTextLinesReveal();
