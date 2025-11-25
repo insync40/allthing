@@ -3,8 +3,8 @@ function initTestimonialSlider() {
   if (!component) return;
 
   const swiperEl = component.querySelector(".swiper.is-testimonial");
-  const prevBtn = component.querySelector(".swiper-button-prev");
-  const nextBtn = component.querySelector(".swiper-button-next");
+  const prevBtn = component.querySelector("[data-nav-btn='prev']");
+  const nextBtn = component.querySelector("[data-nav-btn='next']");
   if (!swiperEl) return;
 
   const swiper = new Swiper(swiperEl, {
