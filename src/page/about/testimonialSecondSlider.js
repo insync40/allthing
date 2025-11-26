@@ -8,7 +8,7 @@ function initTestimonialSecondSlider() {
   if (!swiperEl) return;
 
   const swiper = new Swiper(swiperEl, {
-    slidesPerView: 3,
+    slidesPerView: 1,
     // loop: true,
     grabCursor: true,
     speed: 800,
@@ -18,6 +18,17 @@ function initTestimonialSecondSlider() {
     navigation: {
       prevEl: prevBtn,
       nextEl: nextBtn,
+    },
+
+    breakpoints: {
+ 
+      768: {
+        slidesPerView: 2,
+      },
+   
+      992: {
+        slidesPerView: 3,
+      },
     },
   });
 }

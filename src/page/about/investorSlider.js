@@ -8,8 +8,7 @@ function initInvestorSlider() {
   if (!swiperEl) return;
 
   const swiper = new Swiper(swiperEl, {
-    slidesPerView: 3,
-    // loop: true,
+    slidesPerView: 1,
     grabCursor: true,
     speed: 800,
     keyboard: { enabled: true, pageUpDown: false },
@@ -18,6 +17,14 @@ function initInvestorSlider() {
     navigation: {
       prevEl: prevBtn,
       nextEl: nextBtn,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      992: {
+        slidesPerView: 3,
+      },
     },
   });
 }
