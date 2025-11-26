@@ -72,7 +72,6 @@ function setupRiveVisualScroll(
                 trigger: item,
                 start: "top 70%",
                 end: "bottom 50%",
-                markers: true,
                 onEnter: () => {
                   fireRive(index);
                 },
