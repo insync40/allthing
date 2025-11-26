@@ -61,10 +61,10 @@ function setupTextLinesReveal() {
         },
       });
     });
+  });
 
-    gsap.set("[data-prevent-flicker='true']", {
-      visibility: "visible",
-    });
+  gsap.set("[data-prevent-flicker='true']", {
+    visibility: "visible",
   });
 }
 
