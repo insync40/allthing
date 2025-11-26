@@ -19,7 +19,7 @@ export function initVisualScroll() {
         file,
         "visual_scroll",
         "visual_scroll_new",
-        "State Machine 2",
+        "State Machine 1",
       );
     },
     (error) => {
@@ -51,6 +51,7 @@ function setupRiveVisualScroll(
     onLoad: () => {
       riveInstance.resizeDrawingSurfaceToCanvas();
       const section = document.querySelector(".values_wrap");
+      const items = section.querySelectorAll(".values_item");
 
       if (stateMachine) {
         try {
@@ -60,27 +61,26 @@ function setupRiveVisualScroll(
 
           function fireRive(idx) {
             const trigger = inputs.find((j) => j.name === triggers[idx]);
-            if (trigger) trigger.fire();
+            if (trigger) {
+              trigger.fire();
+              trigger.fire();
+            }
           }
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: "top top",
-              end: "bottom bottom",
-              onUpdate: (self) => {
-                const riveProgress = Math.min(self.progress * 3, 3.99);
-                const newIndex = Math.min(
-                  Math.floor(riveProgress),
-                  triggers.length - 1,
-                );
-
-                if (currentRiveIndex != newIndex) {
-                  fireRive(newIndex);
-                }
-                currentRiveIndex = newIndex;
+          items.forEach((item, index) => {
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: item,
+                start: "top 70%",
+                end: "bottom 50%",
+                markers: true,
+                onEnter: () => {
+                  fireRive(index);
+                },
+                onEnterBack: () => {
+                  fireRive(index);
+                },
               },
-            },
+            });
           });
         } catch (e) {
           console.error("Rive state machine input error:", e);
