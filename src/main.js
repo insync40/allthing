@@ -1,7 +1,10 @@
 import { recruitmentAnim } from "./page/about/recruitment";
 import { initHeroVisual } from "./page/home/heroVisual";
 import { setupTextLinesReveal } from "./page/textLinesReveal";
-import { initVisualScroll } from "./page/home/visualScroll";
+import {
+  initVisualScroll,
+  initVisualScrollMobile,
+} from "./page/home/visualScroll";
 import { initLenisSmoothScrolling } from "./utils/lenisSmoothScrolling";
 import { initTestimonialSlider } from "./page/home/testimonialSlider";
 import { initTestimonialSecondSlider } from "./page/about/testimonialSecondSlider";
@@ -24,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroVisual();
   initVisualScroll();
   initTestimonialSlider();
+  initVisualScrollMobile();
 
   // About Page Animations
   recruitmentAnim();

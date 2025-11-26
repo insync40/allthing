@@ -88,3 +88,62 @@ function setupRiveVisualScroll(
     },
   });
 }
+
+export function initVisualScrollMobile() {
+  const section = document.querySelector(".values_wrap");
+  const riveSrc = document.querySelector("#homeSrcRive");
+  const riveUrl = riveSrc?.dataset?.riveUrl;
+
+  if (!section) return;
+
+  const artboard = "visual_scroll_new";
+  const sm = "State Machine 1";
+
+  const canvasItems = [
+    {
+      canvasId: "#visual_scroll_1",
+      trigger: "step_01",
+    },
+    {
+      canvasId: "#visual_scroll_2",
+      trigger: "step_02",
+    },
+    {
+      canvasId: "#visual_scroll_3",
+      trigger: "step_03",
+    },
+  ];
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(max-width: 767px)", () => {
+    canvasItems.forEach((item, index) => {
+      const riveInstance = new Rive({
+        src: riveUrl,
+        useOffscreenRenderer: true,
+        stateMachines: sm,
+        canvas: document.querySelector(item.canvasId),
+        artboard: artboard,
+        layout: new Layout({
+          fit: Fit.Contain,
+        }),
+        autoplay: true,
+        onLoad: () => {
+          riveInstance.resizeDrawingSurfaceToCanvas();
+          const inputs = riveInstance.stateMachineInputs(sm);
+          const triggerInput = inputs.find((i) => i.name === item.trigger);
+
+          ScrollTrigger.create({
+            trigger: item.canvasId,
+            start: "top bottom",
+            onEnter: () => {
+              if (triggerInput && typeof triggerInput.fire === "function") {
+                triggerInput.fire();
+              }
+            },
+          });
+        },
+      });
+    });
+  });
+}
