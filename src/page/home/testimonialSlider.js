@@ -8,14 +8,7 @@ function initTestimonialSlider() {
   if (!swiperEl) return;
 
   const swiper = new Swiper(swiperEl, {
-    slidesPerView: 1.1,
-    spaceBetween: 16,
-    breakpoints: {
-      992: {
-        slidesPerView: 1,
-        spaceBetween: 0,
-      },
-    },
+    slidesPerView: 1,
     loop: true,
     grabCursor: true,
     speed: 800,
