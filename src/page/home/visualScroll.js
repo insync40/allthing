@@ -124,6 +124,7 @@ export function initVisualScrollMobile() {
         stateMachines: sm,
         canvas: document.querySelector(item.canvasId),
         artboard: artboard,
+        isTouchScrollEnabled: true,
         layout: new Layout({
           fit: Fit.Contain,
         }),

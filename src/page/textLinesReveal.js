@@ -22,7 +22,7 @@ function setupTextLinesReveal() {
               trigger: text,
               start: "top bottom",
               end: "top 80%",
-              toggleActions: "none play none reset",
+              toggleActions: "play none none none",
             },
             defaults: {
               ease: "power3",
