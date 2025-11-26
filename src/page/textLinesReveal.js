@@ -10,57 +10,61 @@ function setupTextLinesReveal() {
 
   if (textEls.length === 0) return;
 
-  textEls.forEach((text) => {
-    SplitText.create(text.childNodes, {
-      type: "words, chars",
-      wordsClass: "word",
-      charsClass: "char",
-      onSplit(self) {
-        return gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: text,
-              start: "top bottom",
-              end: "top 80%",
-              toggleActions: "play none none none",
-            },
-            defaults: {
-              ease: "power3",
-            },
-          })
-          .set(self.words, {
-            willChange: "transform, opacity, filter",
-          })
-          .set(self.chars, {
-            willChange: "color",
-          })
-          .from(self.words, {
-            yPercent: 110,
-            filter: "blur(20px)",
-            autoAlpha: 0,
-            delay: 0.2,
-            duration: 0.8,
-            stagger: { each: 0.1 },
-          })
-          .to(
-            self.chars,
-            {
-              keyframes: [
-                { color: BLUE_500, duration: 0.2 },
-                { color: BRAND_COLOR, duration: 0.2 },
-                { color: "inherit", duration: 0.4 },
-              ],
-              duration: 0.8,
-              stagger: { each: 0.01 },
-            },
-            "<",
-          );
-      },
-    });
-  });
+  const mm = gsap.matchMedia();
 
-  gsap.set("[data-prevent-flicker='true']", {
-    visibility: "visible",
+  mm.add("min-width: 992px", () => {
+    textEls.forEach((text) => {
+      SplitText.create(text.childNodes, {
+        type: "words, chars",
+        wordsClass: "word",
+        charsClass: "char",
+        onSplit(self) {
+          return gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: text,
+                start: "top bottom",
+                end: "top 80%",
+                toggleActions: "play none none none",
+              },
+              defaults: {
+                ease: "power3",
+              },
+            })
+            .set(self.words, {
+              willChange: "transform, opacity, filter",
+            })
+            .set(self.chars, {
+              willChange: "color",
+            })
+            .from(self.words, {
+              yPercent: 110,
+              filter: "blur(20px)",
+              autoAlpha: 0,
+              delay: 0.2,
+              duration: 0.8,
+              stagger: { each: 0.1 },
+            })
+            .to(
+              self.chars,
+              {
+                keyframes: [
+                  { color: BLUE_500, duration: 0.2 },
+                  { color: BRAND_COLOR, duration: 0.2 },
+                  { color: "inherit", duration: 0.4 },
+                ],
+                duration: 0.8,
+                stagger: { each: 0.01 },
+              },
+              "<",
+            );
+        },
+      });
+    });
+
+    gsap.set("[data-prevent-flicker='true']", {
+      visibility: "visible",
+    });
   });
 }
 
