@@ -12,14 +12,14 @@ function setupTextLinesReveal() {
 
   const mm = gsap.matchMedia();
 
-  mm.add("min-width: 992px", () => {
-    textEls.forEach((text) => {
-      SplitText.create(text.childNodes, {
-        type: "words, chars",
-        wordsClass: "word",
-        charsClass: "char",
-        onSplit(self) {
-          return gsap
+  textEls.forEach((text) => {
+    SplitText.create(text.childNodes, {
+      type: "words, chars",
+      wordsClass: "word",
+      charsClass: "char",
+      onSplit(self) {
+        return mm.add("min-width: 992px", () => {
+          gsap
             .timeline({
               scrollTrigger: {
                 trigger: text,
@@ -58,8 +58,8 @@ function setupTextLinesReveal() {
               },
               "<",
             );
-        },
-      });
+        });
+      },
     });
   });
 
