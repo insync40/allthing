@@ -1,16 +1,15 @@
 import { loadRiveFile } from "../../utils/loadRiveFile";
 import { setupRiveInstance } from "../../utils/setupRiveInstance";
 
-const RIVE_URL =
-  "https://cdn.prod.website-files.com/691298781fedcbca4aba115b/6925133fce2f2b8f837cca29_570c0f2fabf2cb939eb0fed8c3629364_adjust_insync-allthings-solutions_overview_hero.riv";
-
 export function solutionsHeroVisual() {
   const section = document.querySelector(".solutions_hero_wrap");
+  const riveSrc = document.querySelector("#solutionsRive");
+  const riveUrl = riveSrc?.dataset?.riveUrl;
 
   if (!section) return;
 
   loadRiveFile(
-    RIVE_URL,
+    riveUrl,
     (file) => {
       setupRiveInstance(
         file,
@@ -28,6 +27,8 @@ export function solutionsHeroVisual() {
 export function initSolutionsThumbnailVisual() {
   const section = document.querySelector(".solutions_items_wrap");
   if (!section) return;
+  const riveSrc = document.querySelector("#solutionsRive");
+  const riveUrl = riveSrc?.dataset?.riveUrl;
 
   const itemJsons = [
     {
@@ -53,7 +54,7 @@ export function initSolutionsThumbnailVisual() {
   ];
 
   loadRiveFile(
-    RIVE_URL,
+    riveUrl,
     (file) => {
       itemJsons.forEach(({ canvasId, artboard, stateMachine }) => {
         setupRiveInstance(file, canvasId, artboard, stateMachine);
@@ -70,6 +71,9 @@ export function initSolutionHeroItem() {
 
   if (!section) return;
 
+  const riveSrc = document.querySelector("#solutionsRive");
+  const riveUrl = riveSrc?.dataset?.riveUrl;
+
   const itemJsons = [
     {
       canvasId: "transparente",
@@ -94,7 +98,7 @@ export function initSolutionHeroItem() {
   ];
 
   loadRiveFile(
-    RIVE_URL,
+    riveUrl,
     (file) => {
       itemJsons.forEach(({ canvasId, artboard, stateMachine }) => {
         setupRiveInstance(file, canvasId, artboard, stateMachine);
